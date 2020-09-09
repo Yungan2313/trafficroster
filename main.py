@@ -1,9 +1,46 @@
 import re
-ptxt = open("p.txt","r",encoding="utf-8")
-per = [[0] *10 for i in range(2)]
+import shutil
+import tkinter as tk
+import random
+#--------------------------------------------tkinter
+# main = tk.Tk()
+
+# main.geometry("800x600")
+
+# main.title("trafficroster")
+
+# main.mainloop()
+
+#--------------------------------------------檔案讀取
+shutil.copyfile("p.txt","p1.txt")
+ptxt = open("p1.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
-ptxt = open("p.txt","r",encoding="utf-8")
+per = [[0] *10 for i in range(line)]
+ptxt = open("p1.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
     per[i] = list(f.split())
-print(per[1][1])
+#--------------------------------------------判斷
+ros = [[0] *15 for i in range(10)]
+#早上正打
+for j in range(0,1):
+    i = 10
+    p1 = 1234
+    while i!=12:
+        p = random.randrange(0,line)
+        if p == p1:
+            continue
+        if per[p][5] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            if day[j] != "0" :
+                ros[j][i] = per[p][0]
+                print(ros[j][i])
+                i = i+1
+                p1 = p 
+                print("j:"+str(j))
+                print("i:"+str(i))
+            
+
+            
