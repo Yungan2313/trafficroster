@@ -23,7 +23,7 @@ for i in range(line):
 #--------------------------------------------判斷
 ros = [[0] *15 for i in range(10)]
 #早上正打
-for j in range(0,1):
+for j in range(0,5):
     i = 10
     p1 = 1234
     while i!=12:
@@ -34,13 +34,13 @@ for j in range(0,1):
             day = []
             d = per[p][1]
             day = list(d.split(","))    
-            if day[j] != "0" :
+            per[p][6] = int(per[p][6])
+            if day[j] != "0" and per[p][6]>0:
                 ros[j][i] = per[p][0]
-                print(ros[j][i])
+                per[p][6]-=1
                 i = i+1
-                p1 = p 
-                print("j:"+str(j))
-                print("i:"+str(i))
+                p1 = p
+#
             
 
             
