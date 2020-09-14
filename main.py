@@ -54,9 +54,8 @@ for j in range(0,5):
                 ros[j][i] = per[p][0]
                 per[p][6]-=1
                 per[p][3]-=1
-                day[0] = "0"
+                day[j] = "0"
                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-                print(per[p][1])
                 i = i+1
                 p1 = p
 #下午正打 
@@ -77,9 +76,11 @@ for j in range(5,10):
                 ros[j][i] = per[p][0]
                 per[p][6]-=1
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
-#大燈
+#上午大燈
 for j in range(0,5):
     i = 14
     while i!=15:
@@ -94,6 +95,8 @@ for j in range(0,5):
                 ros[j][i] = per[p][0]
                 per[p][9]-=1
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #下午大燈
 for j in range(5,10):
@@ -110,6 +113,8 @@ for j in range(5,10):
                 ros[j][i] = per[p][0]
                 per[p][9]-=1
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #上午二燈
 for j in range(0,5):
@@ -126,6 +131,8 @@ for j in range(0,5):
                 ros[j][i] = per[p][0]
                 per[p][8]-=1
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #下午二燈
 for j in range(5,10):
@@ -142,6 +149,8 @@ for j in range(5,10):
                 ros[j][i] = per[p][0]
                 per[p][8]-=1
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #上午打三
 for j in range(0,5):
@@ -157,6 +166,8 @@ for j in range(0,5):
             if day[j] != "0" and per[p][7]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #下午打三
 for j in range(5,10):
@@ -172,6 +183,8 @@ for j in range(5,10):
             if day[j-5] != "0" and per[p][7]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
 #上午北管
 for j in range(0,5):
@@ -190,6 +203,8 @@ for j in range(0,5):
             if day[j] != "0" and per[p][7]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #下午北管
@@ -209,9 +224,10 @@ for j in range(5,10):
             if day[j-5] != "0" and per[p][7]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
-                print(ros[j][i-1])
 #早上二打
 for j in range(0,5):
     i = 8
@@ -229,6 +245,8 @@ for j in range(0,5):
             if day[j] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #下午二打
@@ -248,6 +266,8 @@ for j in range(5,10):
             if day[j-5] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #上午大檔
@@ -267,6 +287,8 @@ for j in range(0,5):
             if day[j] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #下午大檔
@@ -286,6 +308,8 @@ for j in range(5,10):
             if day[j-5] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #上午魯班
@@ -305,6 +329,8 @@ for j in range(0,5):
             if day[j] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #下午魯班
@@ -324,6 +350,8 @@ for j in range(5,10):
             if day[j-5] != "0" and per[p][4]>0:
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
                 i = i+1
                 p1 = p
 #二線
@@ -339,4 +367,6 @@ for j in range(0,5):
         if day[j] != "0" and per[p][4]>0:
             ros[j][i] = per[p][0]
             per[p][3]-=1
+            day[j] = "0"
+            per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
             i = i+1
