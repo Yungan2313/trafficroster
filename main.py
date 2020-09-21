@@ -4,27 +4,6 @@ import tkinter as tk
 import random
 import os
 #--------------------------------------------tkinter
-# main = tk.Tk()
-
-# main.geometry("800x600")
-
-# main.title("trafficroster")
-
-# #frame1
-# two = tk.Label(main,text = "二線")
-# lwol = tk.Label(main,text = "魯班")
-# lwor = tk.Label(main,text = "魯班")
-# noguanf = tk.Label(main,text = "北管")
-# noguanb = tk.Label(main,text = "北管")
-# twopunl = tk.Label(main,text = "二打")
-# twopunt = tk.Label(main,text = "二打")
-# rigpunk = tk.Label(main,text = "正打")
-# rigpunb = tk.Label(main,text = "正打")
-# punthr = tk.Label(main,text = "打三")
-# twodun = tk.Label(main,text = "二燈")
-# bigdun = tk.Label(main,text = "大燈")
-
-# main.mainloop()
 
 #--------------------------------------------檔案讀取
 ptxt = open("p.txt","r",encoding="utf-8")
