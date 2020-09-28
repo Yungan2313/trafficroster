@@ -335,43 +335,43 @@ ros = [[0] *15 for i in range(10)]
 #                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
 #                 i = i+1
 #                 p1 = p
-# #下午魯班
-# for j in range(5,10):
-#     i = 1
-#     p1 = 1234
-#     while i!=3:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
+#下午魯班
+for j in range(5,10):
+    i = 1
+    p1 = 1234
+    while i!=3:
+        p = random.randrange(0,line)
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0" and per[p][4]>0:
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
 #二線
 for j in range(0,5):
     i = 0
-    p = random.randrange(0,line)
-    if per[p][4] != "1":
-        day = []
-        d = per[p][1]
-        day = list(d.split(","))    
-        per[p][4] = int(per[p][4])
-        per[p][3] = int(per[p][3])
-        if day[j] != "0" and per[p][4]>0:
-            ros[j][i] = per[p][0]
-            per[p][3]-=1
-            day[j] = "0"
-            per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-            i = i+1
+    while i!=1:
+        p = random.randrange(0,line)
+        if per[p][4] != "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
 #------------------------------------
 tree.insert("",0,text="星期一上午" ,values=("{0}".format(ros[0][0]),"{0}  {1}".format(ros[0][1],ros[0][2]),"{0}  {1}".format(ros[0][3],ros[0][4]),"{0}  {1}".format(ros[0][5],ros[0][6]),"{0}  {1}".format(ros[0][7],ros[0][8]),"{0}  {1}".format(ros[0][9],ros[0][10]),"{0}".format(ros[0][11]),"{0}".format(ros[0][12]),"{0}".format(ros[0][13]))) #插入数据，
 tree.insert("",1,text="星期一下午" ,values=("{0}".format(ros[5][0]),"{0}  {1}".format(ros[5][1],ros[5][2]),"{0}  {1}".format(ros[5][3],ros[5][4]),"{0}  {1}".format(ros[5][5],ros[5][6]),"{0}  {1}".format(ros[5][7],ros[5][8]),"{0}  {1}".format(ros[5][9],ros[5][10]),"{0}".format(ros[5][11]),"{0}".format(ros[5][12]),"{0}".format(ros[5][13])))
