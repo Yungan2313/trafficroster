@@ -25,7 +25,7 @@ tree.heading("大燈",text="大燈")
 
 a = "fuck"
 
-tree.insert("",0,text="星期一上午" ,values=("{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a))) #插入数据，
+tree.insert("",0,text="星期一上午" ,values=("{0}  {1}".format(a,a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a))) #插入数据，
 tree.insert("",1,text="星期一下午" ,values=("{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a)))
 tree.insert("",2,text="星期二上午" ,values=("{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a)))
 tree.insert("",3,text="星期二下午" ,values=("{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a),"{0}".format(a)))
