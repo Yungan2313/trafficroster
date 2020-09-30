@@ -36,310 +36,404 @@ ptxt = open("p.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
     per[i] = list(f.split())
+layer = []
+for i in range(0,line):
+    layer.append(i)
 #--------------------------------------------判斷
 ros = [[0] *15 for i in range(10)]
-# #早上正打
-# for j in range(0,5):
-#     i = 9
-#     p1 = 1234
-#     while i!=11:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][5] == "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][6] = int(per[p][6])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][6]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][6]-=1
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #下午正打 
-# for j in range(5,10):
-#     i = 9
-#     p1 = 1234
-#     while i!=11:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][5] == "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))   
-#             per[p][6] = int(per[p][6])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][6]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][6]-=1
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #上午大燈
-# for j in range(0,5):
-#     i = 13
-#     while i!=14:
-#         p = random.randrange(0,line)
-#         if per[p][9] == "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][9] = int(per[p][9])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][9]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][9]-=1
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #下午大燈
-# for j in range(5,10):
-#     i = 13
-#     while i!=14:
-#         p = random.randrange(0,line)
-#         if per[p][9] == "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][9] = int(per[p][9])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][9]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][9]-=1
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #上午二燈
-# for j in range(0,5):
-#     i = 12
-#     while i!=13:
-#         p = random.randrange(0,line)
-#         if per[p][8] == "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][8] = int(per[p][8])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][8]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][8]-=1
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #下午二燈
-# for j in range(5,10):
-#     i = 12
-#     while i!=13:
-#         p = random.randrange(0,line)
-#         if per[p][8] == "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][8] = int(per[p][8])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][8]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][8]-=1
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #上午打三
-# for j in range(0,5):
-#     i = 11
-#     while i!=12:
-#         p = random.randrange(0,line)
-#         if per[p][7] == "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][7] = int(per[p][7])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][7]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #下午打三
-# for j in range(5,10):
-#     i = 11
-#     while i!=12:
-#         p = random.randrange(0,line)
-#         if per[p][7] == "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][7] = int(per[p][7])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][7]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-# #上午北管
-# for j in range(0,5):
-#     i = 5
-#     p1 = 1234
-#     while i!=7:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][7] == "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][7] = int(per[p][7])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][7]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #下午北管
-# for j in range(5,10):
-#     i = 5
-#     p1 = 1234
-#     while i!=7:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][7] == "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][7] = int(per[p][7])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][7]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #早上二打
-# for j in range(0,5):
-#     i = 7
-#     p1 = 1234
-#     while i!=9:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #下午二打
-# for j in range(5,10):
-#     i = 7
-#     p1 = 1234
-#     while i!=9:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #上午大檔
-# for j in range(0,5):
-#     i = 3
-#     p1 = 1234
-#     while i!=5:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #下午大檔
-# for j in range(5,10):
-#     i = 3
-#     p1 = 1234
-#     while i!=5:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][2]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j-5] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j-5] = "0"
-#                 per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
-# #上午魯班
-# for j in range(0,5):
-#     i = 1
-#     p1 = 1234
-#     while i!=3:
-#         p = random.randrange(0,line)
-#         if p == p1:
-#             continue
-#         if per[p][4] != "1":
-#             day = []
-#             d = per[p][1]
-#             day = list(d.split(","))    
-#             per[p][4] = int(per[p][4])
-#             per[p][3] = int(per[p][3])
-#             if day[j] != "0" and per[p][4]>0:
-#                 ros[j][i] = per[p][0]
-#                 per[p][3]-=1
-#                 day[j] = "0"
-#                 per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
-#                 i = i+1
-#                 p1 = p
+#早上正打
+for j in range(0,5):
+    i = 9
+    p1 = 1234
+    random.shuffle(layer)
+    l = -1
+    while i!=11:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        per[p][5] = str(per[p][5])
+        if per[p][5] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][6] = int(per[p][6])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0" and per[p][6]>0:
+                ros[j][i] = per[p][0]
+                per[p][6]-=1
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#下午正打 
+for j in range(5,10):
+    i = 9
+    p1 = 1234
+    random.shuffle(layer)
+    l = -1
+    while i!=11:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        per[p][5] = str(per[p][5])
+        if per[p][5] == "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))   
+            per[p][6] = int(per[p][6])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0" and per[p][6]>0:
+                ros[j][i] = per[p][0]
+                per[p][6]-=1
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#上午大燈
+for j in range(0,5):
+    i = 13
+    random.shuffle(layer)
+    l = -1
+    while i!=14:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][9] = str(per[p][9])
+        if per[p][9] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][9] = int(per[p][9])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0" and per[p][9]>0:
+                ros[j][i] = per[p][0]
+                per[p][9]-=1
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#下午大燈
+for j in range(5,10):
+    i = 13
+    random.shuffle(layer)
+    l = -1
+    while i!=14:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][9] = str(per[p][9])
+        if per[p][9] == "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][9] = int(per[p][9])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0" and per[p][9]>0:
+                ros[j][i] = per[p][0]
+                per[p][9]-=1
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#上午二燈
+for j in range(0,5):
+    i = 12
+    random.shuffle(layer)
+    l = -1
+    while i!=13:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][8] = str(per[p][8])
+        if per[p][8] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][8] = int(per[p][8])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0" and per[p][8]>0:
+                ros[j][i] = per[p][0]
+                per[p][8]-=1
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#下午二燈
+for j in range(5,10):
+    i = 12
+    random.shuffle(layer)
+    l = -1
+    while i!=13:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][8] = str(per[p][8])
+        if per[p][8] == "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][8] = int(per[p][8])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0" and per[p][8]>0:
+                ros[j][i] = per[p][0]
+                per[p][8]-=1
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#上午打三
+for j in range(0,5):
+    i = 11
+    random.shuffle(layer)
+    l = -1
+    while i!=12:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][7] = str(per[p][7])
+        if per[p][7] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][7] = int(per[p][7])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#下午打三
+for j in range(5,10):
+    i = 11
+    random.shuffle(layer)
+    l = -1
+    while i!=12:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        per[p][7] = str(per[p][7])
+        if per[p][7] == "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][7] = int(per[p][7])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+#上午北管
+for j in range(0,5):
+    i = 5
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=7:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        per[p][7] = str(per[p][7])
+        if per[p][7] == "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][7] = int(per[p][7])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#下午北管
+for j in range(5,10):
+    i = 5
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=7:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue        
+        per[p][7] = str(per[p][7])
+        if per[p][7] == "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][7] = int(per[p][7])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#早上二打
+for j in range(0,5):
+    i = 7
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=9:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#下午二打
+for j in range(5,10):
+    i = 7
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=9:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#上午大檔
+for j in range(0,5):
+    i = 3
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=5:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#下午大檔
+for j in range(5,10):
+    i = 3
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=5:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][2]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j-5] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j-5] = "0"
+                per[p][2] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
+#上午魯班
+for j in range(0,5):
+    i = 1
+    random.shuffle(layer)
+    l = -1
+    p1 = 1234
+    while i!=3:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
+        if p == p1:
+            continue
+        if per[p][4] != "1":
+            day = []
+            d = per[p][1]
+            day = list(d.split(","))    
+            per[p][4] = int(per[p][4])
+            per[p][3] = int(per[p][3])
+            if day[j] != "0":
+                ros[j][i] = per[p][0]
+                per[p][3]-=1
+                day[j] = "0"
+                per[p][1] = "{0},{1},{2},{3},{4}".format(day[0],day[1],day[2],day[3],day[4])
+                i = i+1
+                p1 = p
 #下午魯班
 for j in range(5,10):
     i = 1
+    random.shuffle(layer)
+    l = -1
     p1 = 1234
     while i!=3:
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
         p = random.randrange(0,line)
         if p == p1:
             continue
@@ -349,7 +443,7 @@ for j in range(5,10):
             day = list(d.split(","))    
             per[p][4] = int(per[p][4])
             per[p][3] = int(per[p][3])
-            if day[j-5] != "0" and per[p][4]>0:
+            if day[j-5] != "0":
                 ros[j][i] = per[p][0]
                 per[p][3]-=1
                 day[j-5] = "0"
@@ -359,8 +453,13 @@ for j in range(5,10):
 #二線
 for j in range(0,5):
     i = 0
+    random.shuffle(layer)
+    l = -1
     while i!=1:
-        p = random.randrange(0,line)
+        l += 1
+        if l == line:
+            break
+        p = layer[l]
         if per[p][4] != "1":
             day = []
             d = per[p][1]
