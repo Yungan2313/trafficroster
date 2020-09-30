@@ -8,7 +8,7 @@ from  tkinter import ttk
 win=tk.Tk()
 tree=ttk.Treeview(win)#表格
 tree["columns"]=("二線","魯班","大檔","北管","二打","正打","打三","二燈","大燈")
-#表示列,不显示
+#表示列,不顯示
 tree.column("二線",width=100)
 tree.column("魯班",width=100)
 tree.column("大檔",width=100)
@@ -20,7 +20,7 @@ tree.column("二燈",width=50)
 tree.column("大燈",width=50)
 
 tree.heading("二線",text="二線")
-tree.heading("魯班",text="魯班")  #显示表头
+tree.heading("魯班",text="魯班")  #顯示表頭
 tree.heading("大檔",text="大檔")
 tree.heading("北管",text="北管")
 tree.heading("二打",text="二打")
