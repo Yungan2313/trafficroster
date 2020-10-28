@@ -631,11 +631,15 @@ def change_label_numer(pc1,pc2):
     cc = pc2
     txt.set("目前選擇:"+str(car[cc])+str(day[dd]))
 def lastc():
-    global dd,cc,ctext
+    global dd,cc,ctext,cancel
+    if ros[dd][cc]!=0:
+        cancel = 1
     name = listbox.curselection()
+    print(cancel)
     if(int(sum(name)) == line):
         ros[dd][cc] = 0
         ctext[dd][cc].set(day[dd])
+        cancel = 0
         if ros[dd][cc] != 0:
             per[sum(name)][3] = int(per[sum(name)][3])
             per[sum(name)][3] += 1
@@ -654,7 +658,8 @@ def lastc():
             if cc==10 or cc==11:
                 per[sum(name)][6] = int(per[sum(name)][6])
                 per[sum(name)][6] += 1
-    else:
+            txt.set("目前選擇:"+str(car[cc])+str(day[dd]))
+    elif cancel == 0:
         ros[dd][cc] = per[sum(name)][0]
         ctext[dd][cc].set(per[sum(name)][0])
         per[sum(name)][3] = int(per[sum(name)][3])
@@ -674,6 +679,9 @@ def lastc():
         if cc==10 or cc==11:
             per[sum(name)][6] = int(per[sum(name)][6])
             per[sum(name)][6] -= 1
+        txt.set("目前選擇:"+str(car[cc])+str(day[dd]))
+    elif cancel == 1:
+        txt.set("請先取消再更改，取消在最下層")
 #--------------------------------------------tkinter
 win=tk.Tk()
 win.geometry("957x740")
@@ -722,6 +730,7 @@ btn.pack()
 #--------------------------------------------change
 dd = 0
 cc = 0
+cancel = 0
 ros = [[0] *14 for i in range(10)]
 ctext = [[0] *14 for i in range(10)]
 for i in range(10):
@@ -1062,8 +1071,8 @@ btn9right26.place(x=210,y=440)
 #--------------------------------------------
 txt = tk.StringVar()
 txt.set("尚未選擇")
-la = tk.Label(win,textvariable = txt)
-la.place(x=450,y=480)
+la = tk.Label(win,textvariable = txt,font = ("新細明體",20),fg = "red")
+la.place(x=0,y=490)
 listbox = tk.Listbox(win)
 for i in range(line):
     listbox.insert(END,per[i][0])
