@@ -635,7 +635,6 @@ def lastc():
     if ros[dd][cc]!=0:
         cancel = 1
     name = listbox.curselection()
-    print(cancel)
     if(int(sum(name)) == line):
         ros[dd][cc] = 0
         ctext[dd][cc].set(day[dd])
