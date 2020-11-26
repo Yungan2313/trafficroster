@@ -18,9 +18,44 @@ def change_label_numer(dd):
         else:
             b.configure(fg = "black",bg = 'gray93')
             c[dd] = 0
-    else:
-        
+    elif dd>9 and dd<12:
+        if dd==10:
+            btnsenn.configure(bg = "red",fg = "white")
+            btnseny.configure(fg = "black",bg = 'gray93')
+        else:
+            btnseny.configure(bg = "red",fg = "white")
+            btnsenn.configure(fg = "black",bg = 'gray93')
+    elif dd>11 and dd<14:
+        if dd==12:
+            btnrighty.configure(bg = "red",fg = "white")
+            btnrightn.configure(fg = "black",bg = 'gray93')
+        else:
+            btnrightn.configure(bg = "red",fg = "white")
+            btnrighty.configure(fg = "black",bg = 'gray93')
+    elif dd>13 and dd<16:
+        if dd==14:
+            btntwoy.configure(bg = "red",fg = "white")
+            btntwon.configure(fg = "black",bg = 'gray93')
+        else:
+            btntwon.configure(bg = "red",fg = "white")
+            btntwoy.configure(fg = "black",bg = 'gray93')
+    elif dd>15 and dd<18:
+        if dd==16:
+            btnbigy.configure(bg = "red",fg = "white")
+            btnbign.configure(fg = "black",bg = 'gray93')
+        else:
+            btnbign.configure(bg = "red",fg = "white")
+            btnbigy.configure(fg = "black",bg = 'gray93')
+    elif dd>17 and dd<20:
+        if dd==16:
+            btnbacky.configure(bg = "red",fg = "white")
+            btnbackn.configure(fg = "black",bg = 'gray93')
+        else:
+            btnbackn.configure(bg = "red",fg = "white")
+            btnbacky.configure(fg = "black",bg = 'gray93')
+    peredit[name][10] == 1
 def choose():
+    global name
     m = [btnm1,btntu1,btnw1,btnth1,btnf1]
     a = [btnm2,btntu2,btnw2,btnth2,btnf2]
     name = sum(listbox.curselection())
@@ -37,6 +72,7 @@ def choose():
     dayatxt = str(day[int(daya[0])])+str(day[int(daya[1])])+str(day[int(daya[2])])+str(day[int(daya[3])])+str(day[int(daya[4])])
     if per[name][5] == "1":
         senbi = "是"
+        peredit[name][10]
     else:
         senbi = "否"
     tree.insert("",0,text="資料" ,values=("{0}".format(per[name][0]),"{0}".format(daymtxt),"{0}".format(dayatxt),"{0}".format(per[name][3]),"{0}".format(senbi),"{0}".format(per[name][5]),"{0}".format(per[name][6]),"{0}".format(per[name][7]),"{0}".format(per[name][8])))
@@ -52,6 +88,37 @@ def choose():
         else:
             a[i].configure(fg = "black",bg = 'gray93')
     entimetxt.set(per[name][3])
+    if per[name][4] == "0":
+        btnsenn.configure(bg = "red",fg = "white")
+        btnseny.configure(fg = "black",bg = 'gray93')
+    else:
+        btnseny.configure(bg = "red",fg = "white")
+        btnsenn.configure(fg = "black",bg = 'gray93')
+    if per[name][5] == "0":
+        btnrightn.configure(bg = "red",fg = "white")
+        btnrighty.configure(fg = "black",bg = 'gray93')
+    else:
+        btnrighty.configure(bg = "red",fg = "white")
+        btnrightn.configure(fg = "black",bg = 'gray93')
+    enrighttxt.set(per[name][6])
+    if per[name][7] == "0":
+        btnbackn.configure(bg = "red",fg = "white")
+        btnbacky.configure(fg = "black",bg = 'gray93')
+    else:
+        btnbacky.configure(bg = "red",fg = "white")
+        btnbackn.configure(fg = "black",bg = 'gray93')
+    if per[name][8] == "0":
+        btntwon.configure(bg = "red",fg = "white")
+        btntwoy.configure(fg = "black",bg = 'gray93')
+    else:
+        btntwoy.configure(bg = "red",fg = "white")
+        btntwon.configure(fg = "black",bg = 'gray93')
+    if per[name][9] == "0":
+        btnbign.configure(bg = "red",fg = "white")
+        btnbigy.configure(fg = "black",bg = 'gray93')
+    else:
+        btnbigy.configure(bg = "red",fg = "white")
+        btnbign.configure(fg = "black",bg = 'gray93')    
 def add():
     a = 0
     
@@ -65,10 +132,12 @@ c = [0,0,0,0,0,0,0,0,0,0]
 ptxt = open("p.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
 per = [[0] *10 for i in range(line)]
+peredit = [[0] *10 for i in range(line)]
 ptxt = open("p.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
     per[i] = list(f.split())
+print(per[0])
 #listbox
 listbox = tk.Listbox(main,font = ("新細明體",20), width = 7)
 for i in range(line):
@@ -79,46 +148,6 @@ pd = tk.StringVar()
 pd.set("請選取要更改的人")
 peda = tk.Label(main,textvariable = pd,font = ("新細明體",30))
 peda.pack()
-# #name
-# lantxt = tk.StringVar()
-# lan = tk.Label(main,textvariable = lantxt)
-# lan.pack()
-# #morning
-# lamtxt = tk.StringVar()
-# lam = tk.Label(main,dafr,textvariable = lamtxt)
-# lam.grid(row = 0,column = 1)
-# #afternoon
-# laatxt = tk.StringVar()
-# laa = tk.Label(main,dafr,textvariable = laatxt)
-# laa.grid(row = 0,column = 2)
-# #day
-# ladtxt = tk.StringVar()
-# lad = tk.Label(main,dafr,textvariable = ladtxt)
-# lad.grid(row = 0,column = 3)
-# #senby
-# lastxt = tk.StringVar()
-# las = tk.Label(main,dafr,textvariable = lastxt)
-# las.grid(row = 0,column = 4)
-# #right
-# lartxt = tk.StringVar()
-# lar = tk.Label(main,dafr,textvariable = lartxt)
-# lar.grid(row = 0,column = 5)
-# #right time
-# larttxt = tk.StringVar()
-# lart = tk.Label(main,dafr,textvariable = larttxt)
-# lart.grid(row = 0,column = 6)
-# #fell back
-# laftxt = tk.StringVar()
-# laf = tk.Label(main,dafr,textvariable = laftxt)
-# laf.grid(row = 0,column = 7)
-# #two
-# lattxt = tk.StringVar()
-# lat = tk.Label(main,dafr,textvariable = lattxt)
-# lat.grid(row = 0,column = 8)
-# #big
-# labtxt = tk.StringVar()
-# lab = tk.Label(main,dafr,textvariable = labtxt)
-# lab.grid(row = 0,column = 8)
 
 #tree-data
 style = ttk.Style(main)
@@ -176,6 +205,9 @@ lari.pack(anchor = "sw")
 #label-right time
 lariti = tk.Label(main,text = "正打次數",font = ("新細明體",20))
 lariti.pack(anchor = "sw")
+#label-back
+laba = tk.Label(main,text = "撤哨",font = ("新細明體",20))
+laba.pack(anchor = "sw")
 #label-two
 latw = tk.Label(main,text = "二燈",font = ("新細明體",20))
 latw.pack(anchor = "sw")
@@ -197,11 +229,11 @@ btntu1 = tk.Button(main,textvariable = txtmo[1],command = partial(change_label_n
 btnw1 = tk.Button(main,textvariable = txtmo[2],command = partial(change_label_numer,2),font = ("新細明體",15))
 btnth1 = tk.Button(main,textvariable = txtmo[3],command = partial(change_label_numer,3),font = ("新細明體",15))
 btnf1 = tk.Button(main,textvariable = txtmo[4],command = partial(change_label_numer,4),font = ("新細明體",15))
-btnm1.place(x=520,y=180)
-btntu1.place(x=560,y=180)
-btnw1.place(x=600,y=180)
-btnth1.place(x=640,y=180)
-btnf1.place(x=680,y=180)
+btnm1.place(x=520,y=185)
+btntu1.place(x=560,y=185)
+btnw1.place(x=600,y=185)
+btnth1.place(x=640,y=185)
+btnf1.place(x=680,y=185)
 #-----
 txtaf = [0,0,0,0,0]
 for i in range(0,5):
@@ -212,17 +244,44 @@ btntu2 = tk.Button(main,textvariable = txtaf[1],command = partial(change_label_n
 btnw2 = tk.Button(main,textvariable = txtaf[2],command = partial(change_label_numer,7),font = ("新細明體",15))
 btnth2 = tk.Button(main,textvariable = txtaf[3],command = partial(change_label_numer,8),font = ("新細明體",15))
 btnf2 = tk.Button(main,textvariable = txtaf[4],command = partial(change_label_numer,9),font = ("新細明體",15))
-btnm2.place(x=520,y=210)
-btntu2.place(x=560,y=210)
-btnw2.place(x=600,y=210)
-btnth2.place(x=640,y=210)
-btnf2.place(x=680,y=210)
+btnm2.place(x=520,y=215)
+btntu2.place(x=560,y=215)
+btnw2.place(x=600,y=215)
+btnth2.place(x=640,y=215)
+btnf2.place(x=680,y=215)
 #entry-times
 entimetxt = tk.StringVar()
 entime = tk.Entry(main,textvariable = entimetxt)
 entime.place(x=520,y=255)
 #button-senbi
-butsen = tk.Button(main,text = "是",command = no)
+btnseny = tk.Button(main,text = "不值",command = partial(change_label_numer,11),font = ("新細明體",15))
+btnsenn = tk.Button(main,text = "值",command = partial(change_label_numer,10),font = ("新細明體",15))
+btnseny.place(x=520,y=278)
+btnsenn.place(x=580,y=278)
+#button-right
+btnrighty = tk.Button(main,text = "是",command = partial(change_label_numer,12),font = ("新細明體",15))
+btnrightn = tk.Button(main,text = "否",command = partial(change_label_numer,13),font = ("新細明體",15))
+btnrighty.place(x=520,y=316)
+btnrightn.place(x=560,y=316)
+#entry-right times
+enrighttxt = tk.StringVar()
+enright = tk.Entry(main,textvariable = enrighttxt)
+enright.place(x=520,y=355)
+#button-back
+btnbacky = tk.Button(main,text = "是",command = partial(change_label_numer,18),font = ("新細明體",15))
+btnbackn = tk.Button(main,text = "否",command = partial(change_label_numer,19),font = ("新細明體",15))
+btnbacky.place(x=520,y=375)
+btnbackn.place(x=560,y=375)
+#button-two
+btntwoy = tk.Button(main,text = "是",command = partial(change_label_numer,14),font = ("新細明體",15))
+btntwon = tk.Button(main,text = "否",command = partial(change_label_numer,15),font = ("新細明體",15))
+btntwoy.place(x=520,y=415)
+btntwon.place(x=560,y=415)
+#button-big
+btnbigy = tk.Button(main,text = "是",command = partial(change_label_numer,16),font = ("新細明體",15))
+btnbign = tk.Button(main,text = "否",command = partial(change_label_numer,17),font = ("新細明體",15))
+btnbigy.place(x=520,y=455)
+btnbign.place(x=560,y=455)
 
 #button-edit
 edit = tk.Button(main,text = "修改",command = lastedit ,font = ("新細明體",10),fg = "red")
