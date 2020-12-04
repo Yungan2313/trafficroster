@@ -7,7 +7,26 @@ from functools import partial
 
 
 def lastedit():
-    a = 0
+    mo = []
+    af = []
+    day = ["0","1","2","3","4","5"]
+    peredit[name][0] = ennatxt.get()
+    for i in range(0,5):
+        if permo[i] == 1:
+            mo.append(i+1)
+        else:
+            mo.append(0)
+    peredit[name][1] = str(day[mo[0]])+str(day[mo[1]])+str(day[mo[2]])+str(day[mo[3]])+str(day[mo[4]])
+    for i in range(0,5):
+        if peraf[i] == 1:
+            af.append(i+1)
+        else:
+            af.append(0)
+    peredit[name][2] = str(day[af[0]])+str(day[af[1]])+str(day[af[2]])+str(day[af[3]])+str(day[af[4]])
+    for i in range(0,10):
+        per[name][i] = peredit[name][i]
+    peredit[name][3] = entimetxt.get()
+
 def change_label_numer(dd):
     if dd<10:
         a = [btnm1,btntu1,btnw1,btnth1,btnf1,btnm2,btntu2,btnw2,btnth2,btnf2]
@@ -15,6 +34,7 @@ def change_label_numer(dd):
         if c[dd] == 0:
             b.configure(bg = "red",fg = "white")
             c[dd] = 1
+            
         else:
             b.configure(fg = "black",bg = 'gray93')
             c[dd] = 0
@@ -53,7 +73,6 @@ def change_label_numer(dd):
         else:
             btnbackn.configure(bg = "red",fg = "white")
             btnbacky.configure(fg = "black",bg = 'gray93')
-    peredit[name][10] == 1
 def choose():
     global name
     m = [btnm1,btntu1,btnw1,btnth1,btnf1]
@@ -72,7 +91,6 @@ def choose():
     dayatxt = str(day[int(daya[0])])+str(day[int(daya[1])])+str(day[int(daya[2])])+str(day[int(daya[3])])+str(day[int(daya[4])])
     if per[name][5] == "1":
         senbi = "是"
-        peredit[name][10]
     else:
         senbi = "否"
     tree.insert("",0,text="資料" ,values=("{0}".format(per[name][0]),"{0}".format(daymtxt),"{0}".format(dayatxt),"{0}".format(per[name][3]),"{0}".format(senbi),"{0}".format(per[name][5]),"{0}".format(per[name][6]),"{0}".format(per[name][7]),"{0}".format(per[name][8])))
@@ -86,8 +104,7 @@ def choose():
         if daya[i]!="0":
             a[i].configure(bg = "red",fg = "white")
         else:
-            a[i].configure(fg = "black",bg = 'gray93')
-    entimetxt.set(per[name][3])
+            a[i].configure(fg = "black",bg = 'gray93')  
     if per[name][4] == "0":
         btnsenn.configure(bg = "red",fg = "white")
         btnseny.configure(fg = "black",bg = 'gray93')
@@ -118,7 +135,17 @@ def choose():
         btnbigy.configure(fg = "black",bg = 'gray93')
     else:
         btnbigy.configure(bg = "red",fg = "white")
-        btnbign.configure(fg = "black",bg = 'gray93')    
+        btnbign.configure(fg = "black",bg = 'gray93')   
+    for i in range(0,5):
+        if daym[i]!="0":
+            permo[i] = 1
+        else:
+            permo[i] = 0
+    for i in range(0,5):
+        if daya[i]!="0":
+            peraf[i] = 1
+        else:
+            peraf[i] = 0
 def add():
     a = 0
     
@@ -133,11 +160,12 @@ ptxt = open("p.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
 per = [[0] *10 for i in range(line)]
 peredit = [[0] *10 for i in range(line)]
+permo = [5,5,5,5,5]
+peraf = [5,5,5,5,5]
 ptxt = open("p.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
     per[i] = list(f.split())
-print(per[0])
 #listbox
 listbox = tk.Listbox(main,font = ("新細明體",20), width = 7)
 for i in range(line):
