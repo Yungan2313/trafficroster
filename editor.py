@@ -16,15 +16,13 @@ def lastedit():
             mo.append(i+1)
         else:
             mo.append(0)
-    peredit[name][1] = str(day[mo[0]])+str(day[mo[1]])+str(day[mo[2]])+str(day[mo[3]])+str(day[mo[4]])
+    peredit[name][1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
     for i in range(0,5):
         if peraf[i] == 1:
             af.append(i+1)
         else:
             af.append(0)
-    peredit[name][2] = str(day[af[0]])+str(day[af[1]])+str(day[af[2]])+str(day[af[3]])+str(day[af[4]])
-    for i in range(0,10):
-        per[name][i] = peredit[name][i]
+    peredit[name][2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
     peredit[name][3] = entimetxt.get()
     if persen[0] == 0:
         peredit[name][4] = 0
@@ -50,10 +48,9 @@ def lastedit():
     for i in range(0,10):
         per[name][i] = peredit[name][i]
     edittxt = open("edit.txt","w",encoding="utf-8")
-    #edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8}".format())
-    edittxt.close()
-    print(peredit[name][4])
-    
+    for i in range(line):
+        edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],per[i][4],per[i][5],per[i][6],per[i][7],per[i][8],per[i][9]))
+    edittxt.close()    
 
 def change_label_numer(dd):
     if dd<10:
@@ -61,13 +58,53 @@ def change_label_numer(dd):
         b = a[dd]
         if c[dd] == 0:
             b.configure(bg = "red",fg = "white")
+        else:
+            b.configure(fg = "black",bg = 'gray93')
+    elif dd>9 and dd<12:
+        if dd==10:
+            btnsenn.configure(bg = "red",fg = "white")
+            btnseny.configure(fg = "black",bg = 'gray93')
+        else:
+            btnseny.configure(bg = "red",fg = "white")
+            btnsenn.configure(fg = "black",bg = 'gray93')
+    elif dd>11 and dd<14:
+        if dd==12:
+            btnrighty.configure(bg = "red",fg = "white")
+            btnrightn.configure(fg = "black",bg = 'gray93')
+        else:
+            btnrightn.configure(bg = "red",fg = "white")
+            btnrighty.configure(fg = "black",bg = 'gray93')
+    elif dd>13 and dd<16:
+        if dd==14:
+            btntwoy.configure(bg = "red",fg = "white")
+            btntwon.configure(fg = "black",bg = 'gray93')
+        else:
+            btntwon.configure(bg = "red",fg = "white")
+            btntwoy.configure(fg = "black",bg = 'gray93')
+    elif dd>15 and dd<18:
+        if dd==16:
+            btnbigy.configure(bg = "red",fg = "white")
+            btnbign.configure(fg = "black",bg = 'gray93')
+        else:
+            btnbign.configure(bg = "red",fg = "white")
+            btnbigy.configure(fg = "black",bg = 'gray93')
+    elif dd>17 and dd<20:
+        if dd==16:
+            btnbacky.configure(bg = "red",fg = "white")
+            btnbackn.configure(fg = "black",bg = 'gray93')
+        else:
+            btnbackn.configure(bg = "red",fg = "white")
+            btnbacky.configure(fg = "black",bg = 'gray93')
+    if dd<10:
+        a = [btnm1,btntu1,btnw1,btnth1,btnf1,btnm2,btntu2,btnw2,btnth2,btnf2]
+        b = a[dd]
+        if c[dd] == 0:
             c[dd] = 1
             if dd<5:
                 permo[dd] = 1
             else:
                 peraf[dd-5] = 1
         else:
-            b.configure(fg = "black",bg = 'gray93')
             c[dd] = 0
             if dd<5:
                 permo[dd] = 0
@@ -75,49 +112,30 @@ def change_label_numer(dd):
                 peraf[dd-5] = 0
     elif dd>9 and dd<12:
         if dd==10:
-            btnsenn.configure(bg = "red",fg = "white")
-            btnseny.configure(fg = "black",bg = 'gray93')
             persen[0] = 0
         else:
-            btnseny.configure(bg = "red",fg = "white")
-            btnsenn.configure(fg = "black",bg = 'gray93')
             persen[0] = 1
     elif dd>11 and dd<14:
         if dd==12:
-            btnrighty.configure(bg = "red",fg = "white")
-            btnrightn.configure(fg = "black",bg = 'gray93')
             perright[0] = 1
         else:
-            btnrightn.configure(bg = "red",fg = "white")
-            btnrighty.configure(fg = "black",bg = 'gray93')
             perright[0] = 0
     elif dd>13 and dd<16:
         if dd==14:
-            btntwoy.configure(bg = "red",fg = "white")
-            btntwon.configure(fg = "black",bg = 'gray93')
             pertwo[0] = 1
         else:
-            btntwon.configure(bg = "red",fg = "white")
-            btntwoy.configure(fg = "black",bg = 'gray93')
             pertwo[0] = 0
     elif dd>15 and dd<18:
         if dd==16:
-            btnbigy.configure(bg = "red",fg = "white")
-            btnbign.configure(fg = "black",bg = 'gray93')
             perbig[0] = 1
         else:
-            btnbign.configure(bg = "red",fg = "white")
-            btnbigy.configure(fg = "black",bg = 'gray93')
             perbig[0] = 0
     elif dd>17 and dd<20:
         if dd==16:
-            btnbacky.configure(bg = "red",fg = "white")
-            btnbackn.configure(fg = "black",bg = 'gray93')
             perback[0] = 1
         else:
-            btnbackn.configure(bg = "red",fg = "white")
-            btnbacky.configure(fg = "black",bg = 'gray93')
             perback[0] = 0
+
 def choose():
     global name
     m = [btnm1,btntu1,btnw1,btnth1,btnf1]
@@ -139,9 +157,9 @@ def choose():
     else:
         senbi = "否"
     tree.insert("",0,text="資料" ,values=("{0}".format(per[name][0]),"{0}".format(daymtxt),"{0}".format(dayatxt),"{0}".format(per[name][3]),"{0}".format(senbi),"{0}".format(per[name][5]),"{0}".format(per[name][6]),"{0}".format(per[name][7]),"{0}".format(per[name][8])))
-    ennatxt.set(per[name][0])
     for i in range(0,5):
         if daym[i]!="0":
+            a = 0
             m[i].configure(bg = "red",fg = "white")
         else:
             m[i].configure(fg = "black",bg = 'gray93')
@@ -150,7 +168,6 @@ def choose():
             a[i].configure(bg = "red",fg = "white")
         else:
             a[i].configure(fg = "black",bg = 'gray93')
-    entimetxt.set(per[name][3])
     if per[name][4] == "0":
         btnsenn.configure(bg = "red",fg = "white")
         btnseny.configure(fg = "black",bg = 'gray93')
@@ -163,7 +180,6 @@ def choose():
     else:
         btnrighty.configure(bg = "red",fg = "white")
         btnrightn.configure(fg = "black",bg = 'gray93')
-    enrighttxt.set(per[name][6])
     if per[name][7] == "0":
         btnbackn.configure(bg = "red",fg = "white")
         btnbacky.configure(fg = "black",bg = 'gray93')
@@ -181,7 +197,10 @@ def choose():
         btnbigy.configure(fg = "black",bg = 'gray93')
     else:
         btnbigy.configure(bg = "red",fg = "white")
-        btnbign.configure(fg = "black",bg = 'gray93')   
+        btnbign.configure(fg = "black",bg = 'gray93')
+    ennatxt.set(per[name][0])
+    entimetxt.set(per[name][3])
+    enrighttxt.set(per[name][6])   
     for i in range(0,5):
         if daym[i]!="0":
             permo[i] = 1
