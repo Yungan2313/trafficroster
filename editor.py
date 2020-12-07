@@ -49,6 +49,11 @@ def lastedit():
         peredit[name][9] = 1
     for i in range(0,10):
         per[name][i] = peredit[name][i]
+    edittxt = open("edit.txt","w",encoding="utf-8")
+    #edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8}".format())
+    edittxt.close()
+    print(peredit[name][4])
+    
 
 def change_label_numer(dd):
     if dd<10:
@@ -57,45 +62,62 @@ def change_label_numer(dd):
         if c[dd] == 0:
             b.configure(bg = "red",fg = "white")
             c[dd] = 1
-            
+            if dd<5:
+                permo[dd] = 1
+            else:
+                peraf[dd-5] = 1
         else:
             b.configure(fg = "black",bg = 'gray93')
             c[dd] = 0
+            if dd<5:
+                permo[dd] = 0
+            else:
+                peraf[dd-5] = 0
     elif dd>9 and dd<12:
         if dd==10:
             btnsenn.configure(bg = "red",fg = "white")
             btnseny.configure(fg = "black",bg = 'gray93')
+            persen[0] = 0
         else:
             btnseny.configure(bg = "red",fg = "white")
             btnsenn.configure(fg = "black",bg = 'gray93')
+            persen[0] = 1
     elif dd>11 and dd<14:
         if dd==12:
             btnrighty.configure(bg = "red",fg = "white")
             btnrightn.configure(fg = "black",bg = 'gray93')
+            perright[0] = 1
         else:
             btnrightn.configure(bg = "red",fg = "white")
             btnrighty.configure(fg = "black",bg = 'gray93')
+            perright[0] = 0
     elif dd>13 and dd<16:
         if dd==14:
             btntwoy.configure(bg = "red",fg = "white")
             btntwon.configure(fg = "black",bg = 'gray93')
+            pertwo[0] = 1
         else:
             btntwon.configure(bg = "red",fg = "white")
             btntwoy.configure(fg = "black",bg = 'gray93')
+            pertwo[0] = 0
     elif dd>15 and dd<18:
         if dd==16:
             btnbigy.configure(bg = "red",fg = "white")
             btnbign.configure(fg = "black",bg = 'gray93')
+            perbig[0] = 1
         else:
             btnbign.configure(bg = "red",fg = "white")
             btnbigy.configure(fg = "black",bg = 'gray93')
+            perbig[0] = 0
     elif dd>17 and dd<20:
         if dd==16:
             btnbacky.configure(bg = "red",fg = "white")
             btnbackn.configure(fg = "black",bg = 'gray93')
+            perback[0] = 1
         else:
             btnbackn.configure(bg = "red",fg = "white")
             btnbacky.configure(fg = "black",bg = 'gray93')
+            perback[0] = 0
 def choose():
     global name
     m = [btnm1,btntu1,btnw1,btnth1,btnf1]
