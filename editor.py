@@ -26,6 +26,29 @@ def lastedit():
     for i in range(0,10):
         per[name][i] = peredit[name][i]
     peredit[name][3] = entimetxt.get()
+    if persen[0] == 0:
+        peredit[name][4] = 0
+    else:
+        peredit[name][4] = 1
+    if perright[0] == 0:
+        peredit[name][5] = 0
+    else:
+        peredit[name][5] = 1
+    peredit[name][6] = enrighttxt.get()
+    if perback[0] == 0:
+        peredit[name][7] = 0
+    else:
+        peredit[name][7] = 1
+    if pertwo[0] == 0:
+        peredit[name][8] = 0
+    else:
+        peredit[name][8] = 1
+    if perbig[0] == 0:
+        peredit[name][9] = 0
+    else:
+        peredit[name][9] = 1
+    for i in range(0,10):
+        per[name][i] = peredit[name][i]
 
 def change_label_numer(dd):
     if dd<10:
@@ -104,7 +127,8 @@ def choose():
         if daya[i]!="0":
             a[i].configure(bg = "red",fg = "white")
         else:
-            a[i].configure(fg = "black",bg = 'gray93')  
+            a[i].configure(fg = "black",bg = 'gray93')
+    entimetxt.set(per[name][3])
     if per[name][4] == "0":
         btnsenn.configure(bg = "red",fg = "white")
         btnseny.configure(fg = "black",bg = 'gray93')
@@ -146,6 +170,26 @@ def choose():
             peraf[i] = 1
         else:
             peraf[i] = 0
+    if per[name][4] == "0":
+        persen[0] = 0
+    else:
+        persen[0] = 1
+    if per[name][5] == "0":
+        perright[0] = 0
+    else:
+        perright[0] = 1
+    if per[name][7] == "0":
+        perback[0] = 0
+    else:
+        perback[0] = 1
+    if per[name][8] == "0":
+        pertwo[0] = 0
+    else:
+        pertwo[0] = 1
+    if per[name][9] == "0":
+        perbig[0] = 0
+    else:
+        perbig[0] = 1
 def add():
     a = 0
     
@@ -162,6 +206,11 @@ per = [[0] *10 for i in range(line)]
 peredit = [[0] *10 for i in range(line)]
 permo = [5,5,5,5,5]
 peraf = [5,5,5,5,5]
+persen = [5]
+perright = [5]
+perback = [5]
+pertwo = [5]
+perbig = [5]
 ptxt = open("p.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
