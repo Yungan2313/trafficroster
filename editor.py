@@ -7,50 +7,57 @@ from functools import partial
 
 
 def lastedit():
+    global line,adedchange
     mo = []
     af = []
     day = ["0","1","2","3","4","5"]
-    peredit[name][0] = ennatxt.get()
+    peredit[0] = ennatxt.get()
     for i in range(0,5):
         if permo[i] == 1:
             mo.append(i+1)
         else:
             mo.append(0)
-    peredit[name][1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
+    peredit[1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
     for i in range(0,5):
         if peraf[i] == 1:
             af.append(i+1)
         else:
             af.append(0)
-    peredit[name][2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
-    peredit[name][3] = entimetxt.get()
+    peredit[2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
+    peredit[3] = entimetxt.get()
     if persen[0] == 0:
-        peredit[name][4] = 0
+        peredit[4] = 0
     else:
-        peredit[name][4] = 1
+        peredit[4] = 1
     if perright[0] == 0:
-        peredit[name][5] = 0
+        peredit[5] = 0
     else:
-        peredit[name][5] = 1
-    peredit[name][6] = enrighttxt.get()
+        peredit[5] = 1
+    peredit[6] = enrighttxt.get()
     if perback[0] == 0:
-        peredit[name][7] = 0
+        peredit[7] = 0
     else:
-        peredit[name][7] = 1
+        peredit[7] = 1
     if pertwo[0] == 0:
-        peredit[name][8] = 0
+        peredit[8] = 0
     else:
-        peredit[name][8] = 1
+        peredit[8] = 1
     if perbig[0] == 0:
-        peredit[name][9] = 0
+        peredit[9] = 0
     else:
-        peredit[name][9] = 1
-    for i in range(0,10):
-        per[name][i] = peredit[name][i]
+        peredit[9] = 1
+        print(adedchange)
+    if adedchange == 0:    
+        for i in range(0,10):
+            per[name][i] = peredit[i]
+    else:
+        line = line+1
+        per.append(peredit)
     edittxt = open("edit.txt","w",encoding="utf-8")
     for i in range(line):
-        edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],per[i][4],per[i][5],per[i][6],per[i][7],per[i][8],per[i][9]))
-    edittxt.close()    
+        edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
+    edittxt.close()
+        
 
 def change_label_numer(dd):
     if dd<10:
@@ -137,7 +144,7 @@ def change_label_numer(dd):
             perback[0] = 0
 
 def choose():
-    global name
+    global name,adedchange
     m = [btnm1,btntu1,btnw1,btnth1,btnf1]
     a = [btnm2,btntu2,btnw2,btnth2,btnf2]
     name = sum(listbox.curselection())
@@ -159,7 +166,6 @@ def choose():
     tree.insert("",0,text="資料" ,values=("{0}".format(per[name][0]),"{0}".format(daymtxt),"{0}".format(dayatxt),"{0}".format(per[name][3]),"{0}".format(senbi),"{0}".format(per[name][5]),"{0}".format(per[name][6]),"{0}".format(per[name][7]),"{0}".format(per[name][8])))
     for i in range(0,5):
         if daym[i]!="0":
-            a = 0
             m[i].configure(bg = "red",fg = "white")
         else:
             m[i].configure(fg = "black",bg = 'gray93')
@@ -168,31 +174,31 @@ def choose():
             a[i].configure(bg = "red",fg = "white")
         else:
             a[i].configure(fg = "black",bg = 'gray93')
-    if per[name][4] == "0":
+    if str(per[name][4]) == "0":
         btnsenn.configure(bg = "red",fg = "white")
         btnseny.configure(fg = "black",bg = 'gray93')
     else:
         btnseny.configure(bg = "red",fg = "white")
         btnsenn.configure(fg = "black",bg = 'gray93')
-    if per[name][5] == "0":
+    if str(per[name][5]) == "0":
         btnrightn.configure(bg = "red",fg = "white")
         btnrighty.configure(fg = "black",bg = 'gray93')
     else:
         btnrighty.configure(bg = "red",fg = "white")
         btnrightn.configure(fg = "black",bg = 'gray93')
-    if per[name][7] == "0":
+    if str(per[name][7]) == "0":
         btnbackn.configure(bg = "red",fg = "white")
         btnbacky.configure(fg = "black",bg = 'gray93')
     else:
         btnbacky.configure(bg = "red",fg = "white")
         btnbackn.configure(fg = "black",bg = 'gray93')
-    if per[name][8] == "0":
+    if str(per[name][8]) == "0":
         btntwon.configure(bg = "red",fg = "white")
         btntwoy.configure(fg = "black",bg = 'gray93')
     else:
         btntwoy.configure(bg = "red",fg = "white")
         btntwon.configure(fg = "black",bg = 'gray93')
-    if per[name][9] == "0":
+    if str(per[name][9]) == "0":
         btnbign.configure(bg = "red",fg = "white")
         btnbigy.configure(fg = "black",bg = 'gray93')
     else:
@@ -231,10 +237,29 @@ def choose():
         perbig[0] = 0
     else:
         perbig[0] = 1
+    btmbtntxt.set("修改")
+    adedchange = 0
 def add():
-    a = 0
-    
-
+    btmbtntxt.set("新增")
+    selected_item = tree.get_children() ## get selected item
+    tree.delete(selected_item)
+    addlist = [btnm1,btntu1,btnw1,btnth1,btnf1,btnm2,btntu2,btnw2,btnth2,btnf2]
+    ennatxt.set("")
+    for i in range(len(addlist)):
+        addlist[i].configure(fg = "black",bg = 'gray93')
+    enrighttxt.set("")
+    entimetxt.set("")
+    btnsenn.configure(fg = "black",bg = 'gray93')
+    btnseny.configure(fg = "black",bg = 'gray93')
+    btnrightn.configure(fg = "black",bg = 'gray93')
+    btnrighty.configure(fg = "black",bg = 'gray93')
+    btntwoy.configure(fg = "black",bg = 'gray93')
+    btntwon.configure(fg = "black",bg = 'gray93')
+    btnbackn.configure(fg = "black",bg = 'gray93')
+    btnbacky.configure(fg = "black",bg = 'gray93')
+    btnbign.configure(fg = "black",bg = 'gray93')
+    btnbigy.configure(fg = "black",bg = 'gray93')
+    adedchange = 1
 main = tk.Tk()
 main.geometry("1000x600")
 main.title("基礎設定")
@@ -244,7 +269,7 @@ c = [0,0,0,0,0,0,0,0,0,0]
 ptxt = open("p.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
 per = [[0] *10 for i in range(line)]
-peredit = [[0] *10 for i in range(line)]
+peredit = [0,0,0,0,0,0,0,0,0,0]
 permo = [5,5,5,5,5]
 peraf = [5,5,5,5,5]
 persen = [5]
@@ -252,6 +277,8 @@ perright = [5]
 perback = [5]
 pertwo = [5]
 perbig = [5]
+adedchange = 0
+name = line-1
 ptxt = open("p.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
@@ -402,7 +429,9 @@ btnbigy.place(x=520,y=455)
 btnbign.place(x=560,y=455)
 
 #button-edit
-edit = tk.Button(main,text = "修改",command = lastedit ,font = ("新細明體",10),fg = "red")
+btmbtntxt = tk.StringVar()
+edit = tk.Button(main,textvariable = btmbtntxt,command = lastedit ,font = ("新細明體",10),fg = "red")
 edit.pack(side = "bottom")
+btmbtntxt.set("修改")
 
 main.mainloop()
