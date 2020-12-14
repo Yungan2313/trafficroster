@@ -5,7 +5,27 @@ from  tkinter import ttk
 from tkinter import Grid
 from functools import partial
 
-
+def delete():
+    name = sum(listbox.curselection())
+    selected_item = tree.get_children() ## get selected item
+    tree.delete(selected_item)
+    listbox.delete(name)
+    nu = line-name-1
+    print(nu)
+    if nu != 0:
+        for i in range(name,name+nu):
+            for j in range(0,10):
+                per[i][j] = per[i+1][j]
+        del per[name:name+1]
+        line = line-1
+    else:
+        del per[name:name+1]
+        line = line-1
+    print(per)
+    # edittxt = open("edit.txt","w",encoding="utf-8")
+    # for i in range(line):
+    #     edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
+    # edittxt.close()
 def lastedit():
     global line,adedchange
     mo = []
@@ -260,13 +280,16 @@ def add():
     btnbign.configure(fg = "black",bg = 'gray93')
     btnbigy.configure(fg = "black",bg = 'gray93')
     adedchange = 1
+
+
+
 main = tk.Tk()
 main.geometry("1000x600")
 main.title("基礎設定")
 
 c = [0,0,0,0,0,0,0,0,0,0]
 
-ptxt = open("p.txt","r",encoding="utf-8")
+ptxt = open("edit.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
 per = [[0] *10 for i in range(line)]
 peredit = [0,0,0,0,0,0,0,0,0,0]
@@ -279,7 +302,7 @@ pertwo = [5]
 perbig = [5]
 adedchange = 0
 name = line-1
-ptxt = open("p.txt","r",encoding="utf-8")
+ptxt = open("edit.txt","r",encoding="utf-8")
 for i in range(line):
     f = ptxt.readline()
     per[i] = list(f.split())
@@ -427,6 +450,10 @@ btnbigy = tk.Button(main,text = "是",command = partial(change_label_numer,16),f
 btnbign = tk.Button(main,text = "否",command = partial(change_label_numer,17),font = ("新細明體",15))
 btnbigy.place(x=520,y=455)
 btnbign.place(x=560,y=455)
+
+#button-delete
+edit = tk.Button(main,text = "刪除",command = delete ,font = ("新細明體",10),fg = "red")
+edit.pack(anchor = "sw")
 
 #button-edit
 btmbtntxt = tk.StringVar()
