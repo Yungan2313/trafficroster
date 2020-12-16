@@ -8,11 +8,8 @@ from functools import partial
 def delete():
     global line
     name = sum(listbox.curselection())
-    #selected_item = tree.get_children() ## get selected item
-    #tree.delete(selected_item)
     listbox.delete(name)
     nu = line-name-1
-    
     if nu != 0:
         for i in range(name,name+nu):
             for j in range(0,10):
@@ -20,14 +17,12 @@ def delete():
         del per[line-1:line]
         line = line-1
     else:
-        print(name,line)
         del per[name:name+1]
         line = line-1
-    print("last---------------------------------------"+str(per))
-    # edittxt = open("edit.txt","w",encoding="utf-8")
-    # for i in range(line):
-    #     edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
-    # edittxt.close()
+    edittxt = open("edit.txt","w",encoding="utf-8")
+    for i in range(line):
+        edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
+    edittxt.close()
 def lastedit():
     global line,adedchange
     mo = []
@@ -75,6 +70,7 @@ def lastedit():
     else:
         line = line+1
         per.append(peredit)
+        tree.insert("",0,text="資料" ,values=("none"))     
     edittxt = open("edit.txt","w",encoding="utf-8")
     for i in range(line):
         edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
@@ -262,6 +258,7 @@ def choose():
     btmbtntxt.set("修改")
     adedchange = 0
 def add():
+    global adedchange
     btmbtntxt.set("新增")
     selected_item = tree.get_children() ## get selected item
     tree.delete(selected_item)
