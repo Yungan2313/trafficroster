@@ -24,11 +24,19 @@ def delete():
         edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
     edittxt.close()
 def lastedit():
-    global line,adedchange
+    global line,adedchange,per,peredit
     mo = []
     af = []
     day = ["0","1","2","3","4","5"]
+
+    b = len(per)
+    print(per[b-1])
+
     peredit[0] = ennatxt.get()
+    
+    b = len(per)
+    print(per[b-1])
+
     for i in range(0,5):
         if permo[i] == 1:
             mo.append(i+1)
@@ -63,14 +71,14 @@ def lastedit():
         peredit[9] = 0
     else:
         peredit[9] = 1
-        print(adedchange)
     if adedchange == 0:    
         for i in range(0,10):
             per[name][i] = peredit[i]
     else:
         line = line+1
         per.append(peredit)
-        tree.insert("",0,text="資料" ,values=("none"))     
+        tree.insert("",0,text="資料" ,values=("none"))
+        b+=1
     edittxt = open("edit.txt","w",encoding="utf-8")
     for i in range(line):
         edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
@@ -114,7 +122,7 @@ def change_label_numer(dd):
             btnbign.configure(bg = "red",fg = "white")
             btnbigy.configure(fg = "black",bg = 'gray93')
     elif dd>17 and dd<20:
-        if dd==16:
+        if dd==18:
             btnbacky.configure(bg = "red",fg = "white")
             btnbackn.configure(fg = "black",bg = 'gray93')
         else:
@@ -156,7 +164,7 @@ def change_label_numer(dd):
         else:
             perbig[0] = 0
     elif dd>17 and dd<20:
-        if dd==16:
+        if dd==18:
             perback[0] = 1
         else:
             perback[0] = 0
@@ -266,20 +274,28 @@ def add():
     ennatxt.set("")
     for i in range(len(addlist)):
         addlist[i].configure(fg = "black",bg = 'gray93')
-    enrighttxt.set("")
-    entimetxt.set("")
-    btnsenn.configure(fg = "black",bg = 'gray93')
+    enrighttxt.set("0")
+    entimetxt.set("5")
+    btnsenn.configure(bg = "red",fg = "white")
     btnseny.configure(fg = "black",bg = 'gray93')
-    btnrightn.configure(fg = "black",bg = 'gray93')
+    btnrightn.configure(bg = "red",fg = "white")
     btnrighty.configure(fg = "black",bg = 'gray93')
     btntwoy.configure(fg = "black",bg = 'gray93')
-    btntwon.configure(fg = "black",bg = 'gray93')
-    btnbackn.configure(fg = "black",bg = 'gray93')
+    btntwon.configure(bg = "red",fg = "white")
+    btnbackn.configure(bg = "red",fg = "white")
     btnbacky.configure(fg = "black",bg = 'gray93')
-    btnbign.configure(fg = "black",bg = 'gray93')
+    btnbign.configure(bg = "red",fg = "white")
     btnbigy.configure(fg = "black",bg = 'gray93')
+    for i in range(0,5):
+        permo[i] = 0
+    for i in range(0,5):
+        peraf[i] = 0
+    persen[0] = 0
+    perright[0] = 0
+    perback[0] = 0
+    pertwo[0] = 0
+    perbig[0] = 0
     adedchange = 1
-
 
 
 main = tk.Tk()
@@ -307,6 +323,7 @@ for i in range(line):
     per[i] = list(f.split())
 #listbox
 listbox = tk.Listbox(main,font = ("新細明體",20), width = 7)
+print(line)
 for i in range(line):
     listbox.insert(END,per[i][0])
 listbox.pack(side = "left",fill = "y")
