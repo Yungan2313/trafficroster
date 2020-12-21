@@ -306,8 +306,8 @@ c = [0,0,0,0,0,0,0,0,0,0]
 
 ptxt = open("edit.txt","r",encoding="utf-8")
 line = len(ptxt.readlines())
+peredit = [0]*10
 per = [[0] *10 for i in range(line)]
-peredit = [0,0,0,0,0,0,0,0,0,0]
 permo = [5,5,5,5,5]
 peraf = [5,5,5,5,5]
 persen = [5]
