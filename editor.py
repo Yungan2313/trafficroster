@@ -4,7 +4,6 @@ from tkinter import Y
 from  tkinter import ttk
 from tkinter import Grid
 from functools import partial
-
 def delete():
     global line
     name = sum(listbox.curselection())
@@ -28,57 +27,81 @@ def lastedit():
     mo = []
     af = []
     day = ["0","1","2","3","4","5"]
-
-    b = len(per)
-    print(per[b-1])
-
-    peredit[0] = ennatxt.get()
-    
-    b = len(per)
-    print(per[b-1])
-
-    for i in range(0,5):
-        if permo[i] == 1:
-            mo.append(i+1)
+    if adedchange == 0:
+        per[name][0] = ennatxt.get()
+        for i in range(0,5):
+            if permo[i] == 1:
+                mo.append(i+1)
+            else:
+                mo.append(0)
+        per[name][1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
+        for i in range(0,5):
+            if peraf[i] == 1:
+                af.append(i+1)
+            else:
+                af.append(0)
+        per[name][2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
+        per[name][3] = entimetxt.get()
+        if persen[0] == 0:
+            per[name][4] = 0
         else:
-            mo.append(0)
-    peredit[1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
-    for i in range(0,5):
-        if peraf[i] == 1:
-            af.append(i+1)
+            per[name][4] = 1
+        if perright[0] == 0:
+            per[name][5] = 0
         else:
-            af.append(0)
-    peredit[2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
-    peredit[3] = entimetxt.get()
-    if persen[0] == 0:
-        peredit[4] = 0
+            per[name][5] = 1
+        per[name][6] = enrighttxt.get()
+        if perback[0] == 0:
+            per[name][7] = 0
+        else:
+            per[name][7] = 1
+        if pertwo[0] == 0:
+            per[name][8] = 0
+        else:
+            per[name][8] = 1
+        if perbig[0] == 0:
+            per[name][9] = 0
+        else:
+            per[name][9] = 1
     else:
-        peredit[4] = 1
-    if perright[0] == 0:
-        peredit[5] = 0
-    else:
-        peredit[5] = 1
-    peredit[6] = enrighttxt.get()
-    if perback[0] == 0:
-        peredit[7] = 0
-    else:
-        peredit[7] = 1
-    if pertwo[0] == 0:
-        peredit[8] = 0
-    else:
-        peredit[8] = 1
-    if perbig[0] == 0:
-        peredit[9] = 0
-    else:
-        peredit[9] = 1
-    if adedchange == 0:    
-        for i in range(0,10):
-            per[name][i] = peredit[i]
-    else:
+        peredit[0] = ennatxt.get()
+        for i in range(0,5):
+            if permo[i] == 1:
+                mo.append(i+1)
+            else:
+                mo.append(0)
+        peredit[1] = str(day[mo[0]])+","+str(day[mo[1]])+","+str(day[mo[2]])+","+str(day[mo[3]])+","+str(day[mo[4]])
+        for i in range(0,5):
+            if peraf[i] == 1:
+                af.append(i+1)
+            else:
+                af.append(0)
+        peredit[2] = str(day[af[0]])+","+str(day[af[1]])+","+str(day[af[2]])+","+str(day[af[3]])+","+str(day[af[4]])
+        peredit[3] = entimetxt.get()
+        if persen[0] == 0:
+            peredit[4] = 0
+        else:
+            peredit[4] = 1
+        if perright[0] == 0:
+            peredit[5] = 0
+        else:
+            peredit[5] = 1
+        peredit[6] = enrighttxt.get()
+        if perback[0] == 0:
+            peredit[7] = 0
+        else:
+            peredit[7] = 1
+        if pertwo[0] == 0:
+            peredit[8] = 0
+        else:
+            peredit[8] = 1
+        if perbig[0] == 0:
+            peredit[9] = 0
+        else:
+            peredit[9] = 1
         line = line+1
         per.append(peredit)
-        tree.insert("",0,text="資料" ,values=("none"))
-        b+=1
+    tree.insert("",0,text="資料" ,values=("none"))
     edittxt = open("edit.txt","w",encoding="utf-8")
     for i in range(line):
         edittxt.write("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}\n".format(per[i][0],per[i][1],per[i][2],per[i][3],str(per[i][4]),str(per[i][5]),per[i][6],str(per[i][7]),str(per[i][8]),str(per[i][9])))
